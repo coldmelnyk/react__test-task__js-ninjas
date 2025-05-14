@@ -1,50 +1,71 @@
-# React + TypeScript + Vite
+# 🚀 Collective Forecast Test Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🛠 Frontend Tech Stack
 
-Currently, two official plugins are available:
+- **React**
+- **TypeScript**
+- **TailwindCSS V3**
+- **Zustand**
+- **Classnames**
+- **React Hook Forms**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Backend Tech Stack
 
-## Expanding the ESLint configuration
+- **Express.js**
+- **Body Parser**
+- **Nodemon**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ⚡ Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+Follow these steps to run the project locally:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
-});
-```
+1. **Clone the repository**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```sh
+   git clone https://github.com/coldmelnyk/react__test-task__js-ninjas
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+   Or download the ZIP archive.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules
-  }
-});
-```
+2. **Navigate to the project folder**
+
+   ```sh
+   cd react__test-task__js-ninjas
+   ```
+
+3. **Install dependencies for client**
+
+   ```sh
+   npm install
+   ```
+
+4. **Go in 'server' folder inside of your cloned project**
+
+   ```sh
+   cd server
+   ```
+
+5. **Install dependencies for server**
+
+   ```sh
+   npm install
+   ```
+
+6. **Run your server**
+
+   ```sh
+   npm start
+   ```
+
+7. **Go back to the frontend part**
+
+   ```sh
+   cd ..
+   ```
+
+8. **Start the development server**
+   ```sh
+   npm start
+   ```
+
+Your app should be opened automatically in system's default browser, but if it has'nt happened, you can open the project by this path `http://localhost:5173/` 🚀
