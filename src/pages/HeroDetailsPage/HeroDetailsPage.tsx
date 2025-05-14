@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Hero } from '../../types';
 import { useParams } from 'react-router';
+
 import { useHeroes } from '../../store';
+
+import { Hero } from '../../types';
 
 export const HeroDetailsPage = () => {
   const [hero, setHero] = useState<Hero | null>(null);

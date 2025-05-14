@@ -16,7 +16,117 @@ const initialHeroes: Hero[] = [
     images: [
       'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
     ]
-  }
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
+  {
+    id: dummyId,
+    nickname: 'Spiddy',
+    real_name: 'Real name of Test Hero',
+    origin_description: 'Made to see how will it looks',
+    superpowers: 'To die',
+    catch_phrase: 'Hello motherfucker',
+    images: [
+      'https://cdn.pixabay.com/photo/2023/02/24/07/40/spiderman-7810368_960_720.png'
+    ]
+  },
 ];
 
 export const useHeroes = create<Store>(set => ({
