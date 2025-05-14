@@ -5,4 +5,5 @@ export interface Store {
   setHeroesArray: (array: Hero[]) => void;
   addNewHero: (newHero: Hero) => void;
   deleteHero: (heroForDeleting: Hero) => void;
+  updateHero: (updatedHeroInfo: Hero) => void;
 }

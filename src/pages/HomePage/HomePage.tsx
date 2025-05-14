@@ -24,8 +24,8 @@ export const HomePage = () => {
   }, [currentPage, superHeroesArray]);
 
   return (
-    <section className="bg-white p-7 flex flex-col gap-7">
-      <h1>Home page...</h1>
+    <section className="bg-[rgb(0_0_0_/_30%)] p-7 flex flex-col gap-7 rounded-3xl text-white">
+      <h1 className="font-bold text-3xl">Home page</h1>
 
       <section className="grid grid-cols-5 gap-3">
         {paginatedArray.map(hero => (

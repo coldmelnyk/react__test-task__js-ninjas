@@ -17,8 +17,9 @@ export const PaginationCell = ({
       onClick={() => {
         handleSearchParams({ page: page.toString() });
       }}
-      className={cn('p-3 text-center bg-none text-black border border-black', {
-        'bg-red-600 text-black': page === currentPage
+      className={cn('cursor-pointer px-5 py-3 rounded-full border bg-none', {
+        'bg-red-600 border-black text-black': page === currentPage,
+        ' text-white border-white': page !== currentPage
       })}
     >
       <button>{page}</button>
