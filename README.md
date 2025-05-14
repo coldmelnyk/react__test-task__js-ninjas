@@ -1,4 +1,4 @@
-# 🚀 Collective Forecast Test Task
+# 🚀 JavaScript Ninjas Test Task
 
 ## 🛠 Frontend Tech Stack
 
