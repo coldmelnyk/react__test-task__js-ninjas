@@ -1,5 +1,5 @@
 export enum Paths {
   HOME = '/',
-  DETAILS = '/:superHeroId',
+  DETAILS = '/:superHeroNickname',
   NOT_FOUND = '*',
 }
