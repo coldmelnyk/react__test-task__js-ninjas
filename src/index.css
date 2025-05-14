@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.background-superhero {
+}
+
+.background-superhero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/superhero-bg.jpeg') no-repeat center center / cover;
+  filter: blur(3px);
+  z-index: -1;
+}
