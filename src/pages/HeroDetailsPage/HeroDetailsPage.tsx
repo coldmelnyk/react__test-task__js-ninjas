@@ -8,10 +8,7 @@ import { Hero } from '../../types';
 export const HeroDetailsPage = () => {
   const [hero, setHero] = useState<Hero | null>(null);
   const superHeroesArray = useHeroes(state => state.heroesArray);
-
   const superHeroId = useParams().superHeroId || '';
-
-  console.log(superHeroId);
 
   useEffect(() => {
     const foundedHero = superHeroesArray.find(
@@ -26,9 +23,13 @@ export const HeroDetailsPage = () => {
   return (
     <>
       {hero ? (
-        <article className="p-5 bg-slate-400 flex justify-center items-center">
+        <article className="p-5 bg-[rgb(0_0_0_/_30%)] flex justify-center items-center gap-10 rounded-3xl">
           <section>
-            <img src={hero.images[0]} alt={`${hero.nickname}-image`} />
+            <img
+              className="h-[400px] w-[400px] aspect-auto"
+              src={hero.images[0]}
+              alt={`${hero.nickname}-image`}
+            />
           </section>
 
           <section>
@@ -55,7 +56,7 @@ export const HeroDetailsPage = () => {
           </section>
         </article>
       ) : (
-        <div>No hero found!</div>
+        <article>No hero found!</article>
       )}
     </>
   );
