@@ -1,9 +1,13 @@
 import { create } from 'zustand';
+// import { str5_36 } from 'hyperdyperid/lib/str5_36';
 
 import { Store, Hero } from '../types';
 
+const dummyId = 'pftva';
+
 const initialHeroes: Hero[] = [
   {
+    id: dummyId,
     nickname: 'Spiddy',
     real_name: 'Real name of Test Hero',
     origin_description: 'Made to see how will it looks',

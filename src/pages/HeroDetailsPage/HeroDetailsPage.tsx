@@ -7,19 +7,19 @@ export const HeroDetailsPage = () => {
   const [hero, setHero] = useState<Hero | null>(null);
   const superHeroesArray = useHeroes(state => state.heroesArray);
 
-  const superHeroNickname = useParams().superHeroNickname || '';
+  const superHeroId = useParams().superHeroId || '';
 
-  console.log(superHeroNickname);
+  console.log(superHeroId);
 
   useEffect(() => {
     const foundedHero = superHeroesArray.find(
-      hero => hero.nickname.toLowerCase() === superHeroNickname.toLowerCase()
+      hero => hero.id.toLowerCase() === superHeroId.toLowerCase()
     );
 
     if (foundedHero) {
       setHero(foundedHero);
     }
-  }, [superHeroNickname, superHeroesArray]);
+  }, [superHeroId, superHeroesArray]);
 
   return (
     <>
