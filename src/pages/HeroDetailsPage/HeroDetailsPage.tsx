@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useHeroes } from '../../store';
@@ -12,7 +12,9 @@ export const HeroDetailsPage = () => {
   const { register, handleSubmit, reset } = useForm<Hero>();
   const superHeroesArray = useHeroes(state => state.heroesArray);
   const updateHeroFunc = useHeroes(state => state.updateHero);
+  const deleteHeroFunc = useHeroes(state => state.deleteHero);
   const superHeroId = useParams().superHeroId || '';
+  const navigate = useNavigate();
 
   const submitSavingNewHero: SubmitHandler<Hero> = (data: Hero) => {
     updateHeroFunc(data);
@@ -63,7 +65,13 @@ export const HeroDetailsPage = () => {
                     Edit
                   </button>
 
-                  <button type="button" className="border px-3 py-1">
+                  <button
+                    onClick={() => {
+                      deleteHeroFunc(hero);
+                      navigate('/');
+                    }}
+                    className="border px-3 py-1"
+                  >
                     Delete
                   </button>
                 </section>
@@ -146,7 +154,15 @@ export const HeroDetailsPage = () => {
                     Edit
                   </button>
 
-                  <button className="border px-3 py-1">Delete</button>
+                  <button
+                    onClick={() => {
+                      deleteHeroFunc(hero);
+                      navigate('/');
+                    }}
+                    className="border px-3 py-1"
+                  >
+                    Delete
+                  </button>
                 </section>
 
                 <section className="flex flex-col gap-2">
