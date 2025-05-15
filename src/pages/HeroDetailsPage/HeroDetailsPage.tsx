@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useHeroes } from '../../store';
 
@@ -7,8 +8,17 @@ import { Hero } from '../../types';
 
 export const HeroDetailsPage = () => {
   const [hero, setHero] = useState<Hero | null>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const { register, handleSubmit, reset } = useForm<Hero>();
   const superHeroesArray = useHeroes(state => state.heroesArray);
+  const updateHeroFunc = useHeroes(state => state.updateHero);
   const superHeroId = useParams().superHeroId || '';
+
+  const submitSavingNewHero: SubmitHandler<Hero> = (data: Hero) => {
+    updateHeroFunc(data);
+
+    setIsEditMode(false);
+  };
 
   useEffect(() => {
     const foundedHero = superHeroesArray.find(
@@ -20,40 +30,148 @@ export const HeroDetailsPage = () => {
     }
   }, [superHeroId, superHeroesArray]);
 
+  useEffect(() => {
+    if (hero) {
+      reset(hero);
+    }
+  }, [hero, reset]);
+
   return (
     <>
       {hero ? (
-        <article className="p-5 bg-[rgb(0_0_0_/_30%)] flex justify-center items-center gap-10 rounded-3xl">
-          <section>
-            <img
-              className="h-[400px] w-[400px] aspect-auto"
-              src={hero.images[0]}
-              alt={`${hero.nickname}-image`}
-            />
-          </section>
+        <article className="p-5 text-lg text-white bg-[rgb(0_0_0_/_30%)] grid grid-cols-2 justify-center items-center gap-10 rounded-3xl">
+          {isEditMode ? (
+            <>
+              <section>
+                <img
+                  className="h-[400px] w-[400px] aspect-auto"
+                  src={hero.images[0]}
+                  alt={`${hero.nickname}-image`}
+                />
+              </section>
 
-          <section>
-            <section>
-              <h2>Nickname: {hero.nickname}</h2>
-              <h3>Phrase: {hero.catch_phrase}</h3>
-            </section>
+              <form
+                className="flex flex-col justify-between h-full"
+                onSubmit={handleSubmit(submitSavingNewHero)}
+              >
+                <section className="self-end flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditMode(state => !state)}
+                    className="border px-3 py-1"
+                  >
+                    Edit
+                  </button>
 
-            <section>
-              <p>
-                Ordinary name: <span>{hero.real_name}</span>
-              </p>
+                  <button type="button" className="border px-3 py-1">
+                    Delete
+                  </button>
+                </section>
 
-              <div>
-                <p>Description:</p>
-                <p>{hero.origin_description}</p>
-              </div>
+                <section className="flex flex-col gap-2">
+                  <h2>
+                    Nickname:{' '}
+                    <input
+                      className="text-black"
+                      type="text"
+                      {...register('nickname')}
+                    />{' '}
+                  </h2>
 
-              <div>
-                <p>Superpowers:</p>
-                <p>{hero.superpowers}</p>
-              </div>
-            </section>
-          </section>
+                  <h3>
+                    Phrase:{' '}
+                    <input
+                      className="text-black"
+                      type="text"
+                      {...register('catch_phrase')}
+                    />{' '}
+                  </h3>
+
+                  <div>
+                    <p>Superpowers:</p>
+                    <p>
+                      <input
+                        className="text-black"
+                        type="text"
+                        {...register('superpowers')}
+                      />{' '}
+                    </p>
+                  </div>
+                </section>
+
+                <section className="flex flex-col gap-2">
+                  <p>
+                    Ordinary name:{' '}
+                    <input
+                      className="text-black"
+                      type="text"
+                      {...register('real_name')}
+                    />{' '}
+                  </p>
+
+                  <div>
+                    <p>Description:</p>
+
+                    <p>
+                      <input
+                        className="text-black"
+                        type="text"
+                        {...register('origin_description')}
+                      />{' '}
+                    </p>
+                  </div>
+                </section>
+
+                <button className="border px-3 py-1" type="submit">
+                  Save
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <section>
+                <img
+                  className="h-[400px] w-[400px] aspect-auto"
+                  src={hero.images[0]}
+                  alt={`${hero.nickname}-image`}
+                />
+              </section>
+
+              <section className="flex flex-col justify-between h-full">
+                <section className="self-end flex gap-2">
+                  <button
+                    onClick={() => setIsEditMode(state => !state)}
+                    className="border px-3 py-1"
+                  >
+                    Edit
+                  </button>
+
+                  <button className="border px-3 py-1">Delete</button>
+                </section>
+
+                <section className="flex flex-col gap-2">
+                  <h2>Nickname: {hero.nickname}</h2>
+                  <h3>Phrase: {hero.catch_phrase}</h3>
+
+                  <div>
+                    <p>Superpowers:</p>
+                    <p>{hero.superpowers}</p>
+                  </div>
+                </section>
+
+                <section className="flex flex-col gap-2">
+                  <p>
+                    Ordinary name: <span>{hero.real_name}</span>
+                  </p>
+
+                  <div>
+                    <p>Description:</p>
+                    <p>{hero.origin_description}</p>
+                  </div>
+                </section>
+              </section>
+            </>
+          )}
         </article>
       ) : (
         <article>No hero found!</article>

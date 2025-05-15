@@ -29,7 +29,7 @@ export const HomePage = () => {
 
       <section className="grid grid-cols-5 gap-3">
         {paginatedArray.map(hero => (
-          <HeroCard hero={hero} />
+          <HeroCard key={hero.id} hero={hero} />
         ))}
       </section>
 
