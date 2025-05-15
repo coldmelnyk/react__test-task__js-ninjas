@@ -76,7 +76,7 @@ export const HomePage = () => {
         </button>
       </section>
 
-      <section className="grid grid-cols-1 overflow-scroll sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <section className="grid grid-cols-1 overflow-y-scroll sm:overflow-hidden sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {paginatedArray.map(hero => (
           <HeroCard key={hero.id} hero={hero} />
         ))}

@@ -23,14 +23,14 @@ export const AddHeroPage = () => {
   };
 
   return (
-    <section className="bg-[rgb(0_0_0_/_30%)] p-7 text-xl flex flex-col gap-7 rounded-3xl text-white">
+    <section className="bg-[rgb(0_0_0_/_30%)] p-7 sm:text-xl flex flex-col gap-2 sm:gap-7 rounded-3xl text-white">
       <h1>Add hero page</h1>
 
       <form
         onSubmit={handleSubmit(submitAddingNewHero)}
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-3 sm:gap-5"
       >
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Nickname:</label>
           <input
             className="text-black rounded px-2 py-1"
@@ -39,7 +39,7 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Real name:</label>
           <input
             className="text-black rounded px-2 py-1"
@@ -48,7 +48,7 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Description:</label>
           <textarea
             className="text-black border rounded px-2 py-1 resize-none col-span-10"
@@ -57,7 +57,7 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Superpowers:</label>
           <textarea
             className="text-black border rounded px-2 py-1 resize-none col-span-10"
@@ -66,7 +66,7 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Catch phrase:</label>
           <input
             className="text-black rounded px-2 py-1"
@@ -75,7 +75,7 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <div className="flex gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Image URL:</label>
           <input
             className="text-black rounded px-2 py-1"
