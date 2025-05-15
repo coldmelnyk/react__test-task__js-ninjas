@@ -21,7 +21,7 @@ export const Pagination = ({
   }
 
   return (
-    <nav>
+    <nav className='align-end'>
       <ul className="flex justify-center gap-3">
         {arrayOfPagesCount.map(number => (
           <PaginationCell
