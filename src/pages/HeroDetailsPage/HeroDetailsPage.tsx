@@ -53,7 +53,7 @@ export const HeroDetailsPage = () => {
               </section>
 
               <form
-                className="flex flex-col justify-between h-full"
+                className="flex flex-col justify-between h-full  max-w-[400px]"
                 onSubmit={handleSubmit(submitSavingNewHero)}
               >
                 <section className="self-end flex gap-2">
@@ -62,7 +62,7 @@ export const HeroDetailsPage = () => {
                     onClick={() => setIsEditMode(state => !state)}
                     className="border px-3 py-1"
                   >
-                    Edit
+                    Cancel
                   </button>
 
                   <button
@@ -145,7 +145,7 @@ export const HeroDetailsPage = () => {
                 />
               </section>
 
-              <section className="flex flex-col justify-between h-full">
+              <section className="flex flex-col justify-between h-full  max-w-[400px]">
                 <section className="self-end flex gap-2">
                   <button
                     onClick={() => setIsEditMode(state => !state)}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 
 import { HeroCard, Pagination } from '../../components';
 
@@ -11,6 +11,7 @@ export const HomePage = () => {
   const superHeroesArray = useHeroes(state => state.heroesArray);
   const [paginatedArray, setPaginatedArray] = useState<Hero[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const currentPage = searchParams.get('page') ? +searchParams.get('page')! : 1;
 
@@ -25,7 +26,18 @@ export const HomePage = () => {
 
   return (
     <section className="bg-[rgb(0_0_0_/_30%)] p-7 flex flex-col gap-7 rounded-3xl text-white">
-      <h1 className="font-bold text-3xl">Home page</h1>
+      <section className="flex justify-between items-center">
+        <h1 className="font-bold text-3xl">Home page</h1>
+        <button
+          type="button"
+          onClick={() => {
+            navigate('/add-hero');
+          }}
+          className="border px-3 py-1"
+        >
+          Add a new Super Hero!
+        </button>
+      </section>
 
       <section className="grid grid-cols-5 gap-3">
         {paginatedArray.map(hero => (

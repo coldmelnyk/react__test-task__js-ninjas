@@ -8,7 +8,7 @@ interface Props {
 
 export const HeroCard = ({ hero }: Props) => {
   return (
-    <NavLink to={`/${hero.id}`}>
+    <NavLink to={`/hero/${hero.id}`}>
       <article className="p-5 bg-slate-900 flex flex-col rounded-3xl justify-center items-center gap-2">
         <img
           className="h-40 w-40"

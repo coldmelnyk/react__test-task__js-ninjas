@@ -1,5 +1,6 @@
 export enum Paths {
   HOME = '/',
-  DETAILS = '/:superHeroId',
-  NOT_FOUND = '*',
+  DETAILS = '/hero/:superHeroId',
+  ADD_HERO = '/add-hero',
+  NOT_FOUND = '*'
 }
