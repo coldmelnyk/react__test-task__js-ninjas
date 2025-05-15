@@ -41,22 +41,22 @@ export const HeroDetailsPage = () => {
   return (
     <>
       {hero ? (
-        <article className="p-5 text-lg text-white bg-[rgb(0_0_0_/_30%)] grid grid-cols-2 justify-center items-center gap-10 rounded-3xl">
+        <article className="p-5 text-lg text-white bg-[rgb(0_0_0_/_30%)] grid md:grid-cols-2 justify-center items-center md:gap-10 rounded-3xl">
           {isEditMode ? (
             <>
-              <section>
+              <section className='flex justify-center items-center'>
                 <img
-                  className="h-[400px] w-[400px] aspect-auto"
+                  className="md:h-[400px] md:w-[400px] max-w-[240px] md:max-w-[400px] aspect-auto"
                   src={hero.images[0]}
                   alt={`${hero.nickname}-image`}
                 />
               </section>
 
               <form
-                className="flex flex-col justify-between h-full  max-w-[400px]"
+                className="flex flex-col justify-center md:justify-between h-full gap-4 md:gap-0 md:max-w-[400px]"
                 onSubmit={handleSubmit(submitSavingNewHero)}
               >
-                <section className="self-end flex gap-2">
+                <section className="md:self-end justify-between md:justify-normal flex md:gap-2">
                   <button
                     type="button"
                     onClick={() => setIsEditMode(state => !state)}
@@ -137,16 +137,16 @@ export const HeroDetailsPage = () => {
             </>
           ) : (
             <>
-              <section>
+              <section className='flex justify-center items-center'>
                 <img
-                  className="h-[400px] w-[400px] aspect-auto"
+                  className="md:h-[400px] md:w-[400px] max-w-[240px] md:max-w-[400px] aspect-auto"
                   src={hero.images[0]}
                   alt={`${hero.nickname}-image`}
                 />
               </section>
 
-              <section className="flex flex-col justify-between h-full  max-w-[400px]">
-                <section className="self-end flex gap-2">
+              <section className="flex flex-col justify-center md:justify-between gap-4 md:gap-0 h-full md:max-w-[400px]">
+                <section className="md:self-end justify-between md:justify-normal flex md:gap-2">
                   <button
                     onClick={() => setIsEditMode(state => !state)}
                     className="border px-3 py-1"

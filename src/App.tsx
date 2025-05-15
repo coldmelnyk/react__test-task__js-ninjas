@@ -7,9 +7,11 @@ export default function App() {
   return (
     <div
       className={cn(
-        'flex py-5 sm:py-0 justify-center sm:items-center h-screen background-superhero',
+        'flex py-5 sm:py-0 px-4 justify-center sm:items-center h-screen background-superhero',
         {
-          'items-center': location.pathname === '/add-hero'
+          'items-center':
+            location.pathname === '/add-hero' ||
+            location.pathname.includes('/hero/')
         }
       )}
     >
