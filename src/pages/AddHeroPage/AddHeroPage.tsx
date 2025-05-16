@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { str10_36 } from 'hyperdyperid/lib/str10_36';
+import { motion } from 'motion/react';
 
 import { useHeroes } from '../../store';
 
@@ -23,8 +24,12 @@ export const AddHeroPage = () => {
   };
 
   return (
-    <section className="bg-[rgb(0_0_0_/_30%)] p-7 sm:text-xl flex flex-col gap-2 sm:gap-7 rounded-3xl text-white">
-      <section className='flex justify-between items-center'>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.7 } }}
+      className="bg-[rgb(0_0_0_/_30%)] p-7 sm:text-xl flex flex-col gap-2 sm:gap-7 rounded-3xl text-white"
+    >
+      <section className="flex justify-between items-center">
         <h1>Add hero page</h1>
 
         <button
@@ -95,10 +100,13 @@ export const AddHeroPage = () => {
           />
         </div>
 
-        <button className="border rounded border-white px-3 py-1 hoveredButton" type="submit">
+        <button
+          className="border rounded border-white px-3 py-1 hoveredButton"
+          type="submit"
+        >
           Add a new buddy!
         </button>
       </form>
-    </section>
+    </motion.section>
   );
 };

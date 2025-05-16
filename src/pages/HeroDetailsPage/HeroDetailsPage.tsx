@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { motion } from 'motion/react';
 
 import { useHeroes } from '../../store';
 
@@ -41,7 +42,11 @@ export const HeroDetailsPage = () => {
   return (
     <>
       {hero ? (
-        <article className="p-5 text-lg text-white bg-[rgb(0_0_0_/_30%)] grid md:grid-cols-2 justify-center gap-4 items-center md:gap-10 rounded-3xl">
+        <motion.article
+          initial={{ translateX: -700 }}
+          animate={{ translateX: 0, transition: { duration: 0.3 } }}
+          className="p-5 text-lg text-white bg-[rgb(0_0_0_/_30%)] grid md:grid-cols-2 justify-center gap-4 items-center md:gap-10 rounded-3xl"
+        >
           {isEditMode ? (
             <>
               <section className="flex justify-center items-center">
@@ -139,7 +144,10 @@ export const HeroDetailsPage = () => {
                   </div>
                 </section>
 
-                <button className="border px-3 py-1 hoveredButton" type="submit">
+                <button
+                  className="border px-3 py-1 hoveredButton"
+                  type="submit"
+                >
                   Save
                 </button>
               </form>
@@ -206,7 +214,7 @@ export const HeroDetailsPage = () => {
               </section>
             </>
           )}
-        </article>
+        </motion.article>
       ) : (
         <article>No hero found!</article>
       )}
