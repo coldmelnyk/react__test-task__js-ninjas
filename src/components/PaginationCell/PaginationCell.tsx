@@ -17,8 +17,8 @@ export const PaginationCell = ({
       onClick={() => {
         handleSearchParams({ page: page.toString() });
       }}
-      className={cn('cursor-pointer px-5 py-3 rounded-full border bg-none', {
-        'bg-red-600 border-black text-black': page === currentPage,
+      className={cn('hoveredButton cursor-pointer px-5 py-3 rounded-full border bg-none', {
+        'bg-red-600 border-black text-black hoveredButtonActive': page === currentPage,
         ' text-white border-white': page !== currentPage
       })}
     >

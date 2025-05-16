@@ -50,11 +50,11 @@ export const HomePage = () => {
   return (
     <section className="bg-[rgb(0_0_0_/_30%)] p-7 flex flex-col gap-7 rounded-3xl text-white justify-between">
       <section className="flex flex-col gap-4 sm:flex-row justify-between items-center font-medium text-lg lg:font-bold lg:text-3xl">
-        <h1 className="">Home page</h1>
+        <h1 className="text-nowrap">Home page</h1>
 
         <input
           type="text"
-          className="text-black rounded-lg px-3 py-1 w-[50%] lg:w-[50%]"
+          className="text-black rounded-lg px-3 py-1 w-[50%] lg:w-[50%] outline-purple-800 hoveredInput"
           value={searchBarValue}
           onChange={event => {
             setSearchParams(
@@ -70,13 +70,13 @@ export const HomePage = () => {
           onClick={() => {
             navigate('/add-hero');
           }}
-          className="border rounded-lg px-3 py-1"
+          className="border rounded-lg px-3 py-1 hoveredButton text-nowrap"
         >
           Add new hero
         </button>
       </section>
 
-      <section className="grid grid-cols-1 overflow-y-scroll sm:overflow-hidden sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <section className="grid grid-cols-1 overflow-y-scroll sm:overflow-hidden sm:grid-cols-3 lg:grid-cols-5 gap-1">
         {paginatedArray.length > 0 ? (
           <>
             {paginatedArray.map(hero => (
@@ -84,7 +84,7 @@ export const HomePage = () => {
             ))}
           </>
         ) : (
-          <h2 className="justify-self-center">No hero found!</h2>
+          <h2 className="justify-self-center italic font-thin">No hero found!</h2>
         )}
       </section>
 

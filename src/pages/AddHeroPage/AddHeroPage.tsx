@@ -32,7 +32,7 @@ export const AddHeroPage = () => {
             navigate(-1);
           }}
           className={
-            'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1'
+            'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1 hoveredButton'
           }
         >{`<-- Back`}</button>
       </section>
@@ -44,7 +44,7 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Nickname:</label>
           <input
-            className="text-black rounded px-2 py-1"
+            className="text-black rounded px-2 py-1 hoveredInput outline-purple-800"
             type="text"
             {...register('nickname')}
           />
@@ -53,7 +53,7 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Real name:</label>
           <input
-            className="text-black rounded px-2 py-1"
+            className="text-black rounded px-2 py-1 hoveredInput outline-purple-800"
             type="text"
             {...register('real_name')}
           />
@@ -62,7 +62,7 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Description:</label>
           <textarea
-            className="text-black border rounded px-2 py-1 resize-none col-span-10"
+            className="text-black rounded px-2 py-1 resize-none col-span-10 hoveredInput outline-purple-800"
             rows={4}
             {...register('origin_description')}
           />
@@ -71,7 +71,7 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Superpowers:</label>
           <textarea
-            className="text-black border rounded px-2 py-1 resize-none col-span-10"
+            className="text-black rounded px-2 py-1 resize-none col-span-10 hoveredInput outline-purple-800"
             rows={2}
             {...register('superpowers')}
           />
@@ -80,7 +80,7 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Catch phrase:</label>
           <input
-            className="text-black rounded px-2 py-1"
+            className="text-black rounded px-2 py-1 hoveredInput outline-purple-800"
             type="text"
             {...register('catch_phrase')}
           />
@@ -89,13 +89,13 @@ export const AddHeroPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           <label>Image URL:</label>
           <input
-            className="text-black rounded px-2 py-1"
+            className="text-black rounded px-2 py-1 hoveredInput outline-purple-800"
             type="text"
             {...register('image')}
           />
         </div>
 
-        <button className="border rounded border-white px-3 py-1" type="submit">
+        <button className="border rounded border-white px-3 py-1 hoveredButton" type="submit">
           Add a new buddy!
         </button>
       </form>

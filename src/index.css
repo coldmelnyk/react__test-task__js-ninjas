@@ -10,3 +10,23 @@
   filter: blur(3px);
   z-index: -1;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.hoveredButton {
+  @apply hover:scale-[1.03] duration-200 hover:bg-[rgb(0_0_0_/_60%)]
+}
+
+.hoveredButtonActive {
+  @apply hover:text-white hover:border-white hover:bg-red-600
+}
+
+.hoveredInput {
+  @apply hover:shadow-purple-800 hover:shadow-inner focus:shadow-none duration-200
+}
+
+.hoveredCard {
+  @apply hover:shadow-md hover:shadow-gray-200 duration-200
+}

@@ -46,7 +46,7 @@ export const HeroDetailsPage = () => {
             <>
               <section className="flex justify-center items-center">
                 <img
-                  className="md:h-[400px] md:w-[400px] max-w-[240px] md:max-w-[400px] aspect-auto"
+                  className="md:h-[400px] md:w-[400px] max-w-[240px] md:max-w-[400px]  hoveredButton"
                   src={hero.images[0]}
                   alt={`${hero.nickname}-image`}
                 />
@@ -62,14 +62,14 @@ export const HeroDetailsPage = () => {
                       navigate(-1);
                     }}
                     className={
-                      'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1'
+                      'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1 hoveredButton'
                     }
                   >{`<-- Back`}</button>
 
                   <button
                     type="button"
                     onClick={() => setIsEditMode(state => !state)}
-                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1"
+                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1 hoveredButton"
                   >
                     Cancel
                   </button>
@@ -79,7 +79,7 @@ export const HeroDetailsPage = () => {
                       deleteHeroFunc(hero);
                       navigate('/');
                     }}
-                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1"
+                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1 hoveredButton"
                   >
                     Delete
                   </button>
@@ -89,7 +89,7 @@ export const HeroDetailsPage = () => {
                   <h2>
                     Nickname:{' '}
                     <input
-                      className="text-black"
+                      className="text-black hoveredInput outline-purple-800"
                       type="text"
                       {...register('nickname')}
                     />{' '}
@@ -98,7 +98,7 @@ export const HeroDetailsPage = () => {
                   <h3>
                     Phrase:{' '}
                     <input
-                      className="text-black"
+                      className="text-black hoveredInput outline-purple-800"
                       type="text"
                       {...register('catch_phrase')}
                     />{' '}
@@ -108,7 +108,7 @@ export const HeroDetailsPage = () => {
                     <p>Superpowers:</p>
                     <p>
                       <input
-                        className="text-black"
+                        className="text-black hoveredInput outline-purple-800"
                         type="text"
                         {...register('superpowers')}
                       />{' '}
@@ -120,7 +120,7 @@ export const HeroDetailsPage = () => {
                   <p>
                     Ordinary name:{' '}
                     <input
-                      className="text-black"
+                      className="text-black hoveredInput outline-purple-800"
                       type="text"
                       {...register('real_name')}
                     />{' '}
@@ -131,7 +131,7 @@ export const HeroDetailsPage = () => {
 
                     <p>
                       <input
-                        className="text-black"
+                        className="text-black hoveredInput outline-purple-800"
                         type="text"
                         {...register('origin_description')}
                       />{' '}
@@ -139,7 +139,7 @@ export const HeroDetailsPage = () => {
                   </div>
                 </section>
 
-                <button className="border px-3 py-1" type="submit">
+                <button className="border px-3 py-1 hoveredButton" type="submit">
                   Save
                 </button>
               </form>
@@ -161,13 +161,13 @@ export const HeroDetailsPage = () => {
                       navigate(-1);
                     }}
                     className={
-                      'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1'
+                      'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1 hoveredButton'
                     }
                   >{`<-- Back`}</button>
 
                   <button
                     onClick={() => setIsEditMode(state => !state)}
-                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1"
+                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1 hoveredButton"
                   >
                     Edit
                   </button>
@@ -177,7 +177,7 @@ export const HeroDetailsPage = () => {
                       deleteHeroFunc(hero);
                       navigate('/');
                     }}
-                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1"
+                    className="bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl px-3 py-1 hoveredButton"
                   >
                     Delete
                   </button>
