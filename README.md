@@ -12,7 +12,7 @@
 ## 🛠 Backend Tech Stack
 
 - **Express.js**
-- **Body Parser**
+- **SQLite 3**
 - **Nodemon**
 
 ## ⚡ Getting Started
