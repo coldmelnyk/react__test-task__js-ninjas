@@ -77,15 +77,21 @@ export const HomePage = () => {
       </section>
 
       <section className="grid grid-cols-1 overflow-y-scroll sm:overflow-hidden sm:grid-cols-3 lg:grid-cols-5 gap-3">
-        {paginatedArray.map(hero => (
-          <HeroCard key={hero.id} hero={hero} />
-        ))}
+        {paginatedArray.length > 0 ? (
+          <>
+            {paginatedArray.map(hero => (
+              <HeroCard key={hero.id} hero={hero} />
+            ))}
+          </>
+        ) : (
+          <h2 className="justify-self-center">No hero found!</h2>
+        )}
       </section>
 
       <Pagination
         handleSearchParams={setSearchParams}
         currentPage={currentPage}
-        arrayLength={superHeroesArray.length}
+        arrayLength={filteredHeroesArray.length}
       />
     </section>
   );

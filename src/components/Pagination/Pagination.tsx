@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { SetURLSearchParams } from 'react-router';
 
 import { PaginationCell } from '../PaginationCell';
@@ -13,15 +14,21 @@ export const Pagination = ({
   handleSearchParams,
   arrayLength
 }: Props) => {
-  const countOfPages = Math.ceil(arrayLength / 5);
-  const arrayOfPagesCount: number[] = [1];
+  const [arrayOfPagesCount, setArrayOfPagesCount] = useState([1]);
 
-  for (let i = 2; i <= countOfPages; i++) {
-    arrayOfPagesCount.push(i);
-  }
+  useEffect(() => {
+    const newArrayOfPages = [1];
+    const countOfPages = Math.ceil(arrayLength / 5);
+
+    for (let i = 2; i <= countOfPages; i++) {
+      newArrayOfPages.push(i);
+    }
+
+    setArrayOfPagesCount(newArrayOfPages);
+  }, [arrayLength]);
 
   return (
-    <nav className='align-end'>
+    <nav className="align-end">
       <ul className="flex justify-center gap-3">
         {arrayOfPagesCount.map(number => (
           <PaginationCell
