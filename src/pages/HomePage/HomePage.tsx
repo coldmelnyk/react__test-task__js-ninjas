@@ -5,21 +5,38 @@ import { HeroCard, Pagination } from '../../components';
 
 import { useHeroes } from '../../store';
 
-import { getSearchWith } from '../../utils';
+import { client, getSearchWith } from '../../utils';
 
 import { Hero } from '../../types';
 
 export const HomePage = () => {
   const superHeroesArray = useHeroes(state => state.heroesArray);
+  const setHeroesArray = useHeroes(state => state.setHeroesArray);
   const [paginatedArray, setPaginatedArray] = useState<Hero[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchBarValue, setSearchBarValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const currentPage = searchParams.get('page') ? +searchParams.get('page')! : 1;
   const queryFindName = searchParams.get('query')
     ? searchParams.get('query')
     : '';
+
+  useEffect(() => {
+    if (!superHeroesArray.length) {
+      setIsLoading(true);
+
+      client
+        .get<Hero[]>('/heroes')
+        .then(array => setHeroesArray(array))
+        .finally(() =>
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2000)
+        );
+    }
+  }, []);
 
   useEffect(() => {
     const lastElement = currentPage * 5;
@@ -77,14 +94,22 @@ export const HomePage = () => {
       </section>
 
       <section className="grid grid-cols-1 overflow-y-scroll sm:overflow-hidden sm:grid-cols-3 lg:grid-cols-5 gap-1">
-        {paginatedArray.length > 0 ? (
-          <>
-            {paginatedArray.map(hero => (
-              <HeroCard key={hero.id} hero={hero} />
-            ))}
-          </>
+        {isLoading ? (
+          <div>Loading superheroes...</div>
         ) : (
-          <h2 className="justify-self-center italic font-thin">No hero found!</h2>
+          <>
+            {paginatedArray.length > 0 ? (
+              <>
+                {paginatedArray.map(hero => (
+                  <HeroCard key={hero.id} hero={hero} />
+                ))}
+              </>
+            ) : (
+              <h2 className="justify-self-center italic font-thin">
+                No hero found!
+              </h2>
+            )}
+          </>
         )}
       </section>
 

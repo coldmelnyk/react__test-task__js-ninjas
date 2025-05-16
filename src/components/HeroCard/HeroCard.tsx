@@ -15,7 +15,7 @@ export const HeroCard = ({ hero }: Props) => {
         animate={{
           scale: 1,
           opacity: 1,
-          transition: { duration: 0.1 }
+          transition: { duration: 0.7 }
         }}
         className="p-5 hoveredCard bg-slate-900 flex flex-col rounded-3xl justify-center items-center gap-2"
       >
