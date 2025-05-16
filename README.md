@@ -14,6 +14,7 @@
 - **Express.js**
 - **SQLite 3**
 - **Nodemon**
+- **CORS**
 
 ## ⚡ Getting Started
 
