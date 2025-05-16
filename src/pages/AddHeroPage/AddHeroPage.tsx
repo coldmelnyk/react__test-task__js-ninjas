@@ -24,7 +24,18 @@ export const AddHeroPage = () => {
 
   return (
     <section className="bg-[rgb(0_0_0_/_30%)] p-7 sm:text-xl flex flex-col gap-2 sm:gap-7 rounded-3xl text-white">
-      <h1>Add hero page</h1>
+      <section className='flex justify-between items-center'>
+        <h1>Add hero page</h1>
+
+        <button
+          onClick={() => {
+            navigate(-1);
+          }}
+          className={
+            'font-light bg-[rgb(0_0_0_/_30%)] text-white  rounded-xl p-1'
+          }
+        >{`<-- Back`}</button>
+      </section>
 
       <form
         onSubmit={handleSubmit(submitAddingNewHero)}
