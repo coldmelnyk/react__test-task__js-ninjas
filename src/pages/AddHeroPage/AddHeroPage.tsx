@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { useHeroes } from '../../store';
 
 import { Hero, HeroForm } from '../../types';
+import { client } from '../../utils';
 
 export const AddHeroPage = () => {
   const { register, handleSubmit } = useForm<HeroForm>();
@@ -19,8 +20,13 @@ export const AddHeroPage = () => {
       id: str10_36()
     };
 
-    addHeroFunc(newHero);
-    navigate('/');
+    client
+      .post('/heroes', newHero)
+      .then(() => {
+        addHeroFunc(newHero);
+        navigate('/');
+      })
+      .catch(err => console.log(err));
   };
 
   return (
