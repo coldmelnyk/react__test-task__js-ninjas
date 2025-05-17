@@ -1,8 +1,19 @@
-const path = require('path');
+import path from 'path';
+import express from 'express';
+import sqlite3 from 'sqlite3';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
 
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const cors = require('cors');
+import {
+  postNewHero,
+  getHeroes,
+  getHero,
+  putUpdateHero,
+  deleteHero
+} from './controllers/heroes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -15,7 +26,7 @@ const db = new sqlite3.Database(dbPath, err => {
 app.use(express.json());
 app.use(cors());
 
-db.run(`
+db.run(`  
   CREATE TABLE IF NOT EXISTS heroes (
     id TEXT PRIMARY KEY,
     nickname TEXT NOT NULL,
@@ -27,122 +38,13 @@ db.run(`
   )
 `);
 
-app.get('/heroes', (req, res) => {
-  db.all('SELECT * FROM heroes', [], (err, rows) => {
-    if (err) return res.status(500).json({ error: err.message });
+app.get('/heroes', getHeroes(db));
+app.get('/heroes/:id', getHero(db));
 
-    const heroes = rows.map(hero => ({
-      ...hero,
-      images: JSON.parse(hero.images || '[]')
-    }));
-    res.json(heroes);
-  });
-});
+app.post('/heroes', postNewHero(db));
 
-app.get('/heroes/:id', (req, res) => {
-  const { id } = req.params;
-  db.get('SELECT * FROM heroes WHERE id = ?', [id], (err, row) => {
-    if (err) return res.status(500).json({ error: err.message });
-    if (!row) return res.status(404).json({ error: 'Hero not found' });
+app.put('/heroes/:id', putUpdateHero(db));
 
-    row.images = JSON.parse(row.images || '[]');
-    res.json(row);
-  });
-});
-
-app.post('/heroes', (req, res) => {
-  const {
-    id,
-    nickname,
-    real_name,
-    origin_description,
-    superpowers,
-    catch_phrase,
-    images
-  } = req.body;
-
-  const imagesJson = JSON.stringify(images || []);
-
-  db.run(
-    `INSERT INTO heroes (id, nickname, real_name, origin_description, superpowers, catch_phrase, images)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    [
-      id,
-      nickname,
-      real_name,
-      origin_description,
-      superpowers,
-      catch_phrase,
-      imagesJson
-    ],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.status(201).json({
-        id,
-        nickname,
-        real_name,
-        origin_description,
-        superpowers,
-        catch_phrase,
-        images
-      });
-    }
-  );
-});
-
-app.put('/heroes/:id', (req, res) => {
-  const { id } = req.params;
-  const {
-    nickname,
-    real_name,
-    origin_description,
-    superpowers,
-    catch_phrase,
-    images
-  } = req.body;
-
-  const imagesJson = JSON.stringify(images || []);
-
-  db.run(
-    `UPDATE heroes
-     SET nickname = ?, real_name = ?, origin_description = ?, superpowers = ?, catch_phrase = ?, images = ?
-     WHERE id = ?`,
-    [
-      nickname,
-      real_name,
-      origin_description,
-      superpowers,
-      catch_phrase,
-      imagesJson,
-      id
-    ],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      if (this.changes === 0)
-        return res.status(404).json({ error: 'Hero not found' });
-
-      res.json({
-        id,
-        nickname,
-        real_name,
-        origin_description,
-        superpowers,
-        catch_phrase,
-        images
-      });
-    }
-  );
-});
-
-app.delete('/heroes/:id', (req, res) => {
-  const { id } = req.params;
-  db.run('DELETE FROM heroes WHERE id = ?', [id], function (err) {
-    if (err) return res.status(500).json({ error: err.message });
-    if (this.changes === 0)
-      return res.status(404).json({ error: 'Hero not found' });
-
-    res.json({ message: 'Hero deleted successfully' });
-  });
-});
+app.delete('/heroes/:id', deleteHero(db));
 
 app.listen(3030);
